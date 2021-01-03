@@ -12,3 +12,14 @@ app.use(express.json());
 // connect to MongoDB with mongoose
 mongoose.connect(process.env.MONGODB_URI || )
 
+// View Routes
+app.get("/", (req,res) => {
+    res.sendFile(path.join(_dirname, "/views/index.html"));
+});
+
+// API Routes
+app.get("/api/config", (req,res) => {
+    res.json({
+        success: true,
+    });
+});
