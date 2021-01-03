@@ -21,9 +21,12 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout-tracker
 const connection = mongoose.connection;
 
 connection.on("connected", () => {
-    console.log("mongoose connected successfully.");
+    console.log("Mongoose connected successfully.");
 });
 
+connection.on("error", (err) => {
+    console.log("Mongoose connection error: " + err);
+})
 // View Routes
 app.get("/", (req,res) => {
     res.sendFile(path.join(_dirname, "/views/index.html"));
