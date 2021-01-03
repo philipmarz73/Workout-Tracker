@@ -17,6 +17,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout-tracker
     useCreateIndex: true
   });
 
+//   adding test function to test mongoose connection
+const connection = mongoose.connection;
+
+connection.on("connected", () => {
+    console.log("mongoose connected successfully.");
+});
+
 // View Routes
 app.get("/", (req,res) => {
     res.sendFile(path.join(_dirname, "/views/index.html"));
