@@ -10,7 +10,12 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // connect to MongoDB with mongoose
-mongoose.connect(process.env.MONGODB_URI || )
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout-tracker", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+  });
 
 // View Routes
 app.get("/", (req,res) => {
