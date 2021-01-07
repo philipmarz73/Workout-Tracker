@@ -9,3 +9,6 @@ const WorkoutSchema = new Schema({
     sets: String,
     distance: String,
 });
+
+const workout = mongoose.model("workout", WorkoutSchema);
+module.exports = workout;
