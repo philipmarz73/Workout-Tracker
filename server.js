@@ -1,6 +1,6 @@
 // 1.Require Express
 const express = require("express");
-const path = require("path");
+
 const mongoose = require("mongoose");
 // 2. Create an instance of Express
 const app = express();
@@ -9,6 +9,9 @@ const PORT = process.env.PORT || 8080;
 // Add middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(express.static("public"));
+
 // connect to MongoDB with mongoose
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout-tracker", {
     useNewUrlParser: true,
@@ -28,9 +31,7 @@ connection.on("error", (err) => {
     console.log("Mongoose connection error: " + err);
 })
 // View Routes
-app.get("/", (req,res) => {
-    res.sendFile(path.join(__dirname, "/public/index.html"));
-});
+app.use(require("./routes/htmlroutes.js"));
 
 // API Routes
 app.get("/api/config", (req,res) => {
@@ -39,4 +40,6 @@ app.get("/api/config", (req,res) => {
     });
 });
 
-app.listen(PORT);
+app.listen(PORT, ()=> {
+    console.log(`app running at http://localhost:${PORT}`)
+});
