@@ -29,7 +29,7 @@ connection.on("error", (err) => {
 })
 // View Routes
 app.get("/", (req,res) => {
-    res.sendFile(path.join(_dirname, "/views/index.html"));
+    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 // API Routes
@@ -38,3 +38,5 @@ app.get("/api/config", (req,res) => {
         success: true,
     });
 });
+
+app.listen(PORT);
