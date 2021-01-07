@@ -11,3 +11,6 @@ async function init() {
   }
 }
 
+module.exports = {
+  Workout:require("./models/Workouts"),
+};
