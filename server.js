@@ -31,14 +31,10 @@ connection.on("error", (err) => {
     console.log("Mongoose connection error: " + err);
 })
 // View Routes
-app.use(require("./routes/htmlroutes.js"));
+app.use(require("./routes/htmlRoutes.js"));
 
 // API Routes
-app.get("/api/config", (req,res) => {
-    res.json({
-        success: true,
-    });
-});
+app.use(require("./routes/apiRoutes.js"));
 
 app.listen(PORT, ()=> {
     console.log(`app running at http://localhost:${PORT}`)
