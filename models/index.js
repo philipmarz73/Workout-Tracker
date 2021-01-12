@@ -12,5 +12,5 @@
 // }
 
 module.exports = {
-  Workout:require("./models/workouts"),
+  Workout:require("./workouts"),
 };
